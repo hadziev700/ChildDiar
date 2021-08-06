@@ -26,6 +26,7 @@ const Form = require('../models/Form.model')
   postFormId: async (req, res) => {
     try {
       const formPost = await Form.create({
+        text:req.body.text,
         user: req.body.user,
         child: req.body.child,
         event: req.body.event
