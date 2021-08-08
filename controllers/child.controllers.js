@@ -4,9 +4,9 @@ const User = require("../models/User.model");
 module.exports.childController = {
   getAll: async (req, res) => {
     try {
-      const childs = await Child.find();
+      const child = await Child.find();
 
-      return res.json(childs);
+      return res.json(child);
     } catch (e) {
       return res.status(400).json({
         error: e.toString(),

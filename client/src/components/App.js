@@ -1,10 +1,13 @@
+import Header from '../components/App/Header'
+import Main from './App/Main';
 
-
-import './App.css';
 
 function App() {
   return (
-    <div>HAZ</div>
+    <div>
+      <Header/>
+      <Main/>
+    </div>
   );
 }
 
