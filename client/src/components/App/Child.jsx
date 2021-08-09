@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Child(props) {
-
+  const token = useSelector(state => state.application.token)
   const [spacing, setSpacing] = React.useState(2);
   const child = useSelector(state => state.child.items)
   const dispatch = useDispatch();
@@ -58,52 +58,53 @@ function Child(props) {
     dispatch(loadChild());
   }, [dispatch])
 
-  return (
-    (
-      <div>
-        <Container maxWidth="xl">
-          <Grid item xs={12}>
+  if(token) {
+    return (
+      (
+        <div>
+          <Container maxWidth="xl">
             <Grid item xs={12}>
-              <Paper className={classes.paper}>Дети</Paper>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>Дети</Paper>
+              </Grid>
+              <Grid container justifyContent="center" spacing={spacing}>
+                {child.map(item => (
+                  <Card className={classes.root}>
+                    <CardContent>
+                      <Typography>
+                        {/*<img className='img' src={item.imageURL}/>*/}
+                        <img className='img' src={item.imageURL}/>
+                      </Typography>
+                      <Typography variant="h5" component="h2">
+                      </Typography>
+
+                      <Typography className={classes.pos} color="textSecondary">
+                        <h3>{item.name}</h3>
+                      </Typography>
+
+                      <Typography className={classes.pos} color="textSecondary">
+                        <h4>{item.age}</h4>
+                      </Typography>
+
+                      <Typography className={classes.pos} color="textSecondary">
+                        <h4>{item.gender}</h4>
+                      </Typography>
+
+                    </CardContent>
+                    <CardActions>
+                      {/*<Button size="small">Читать подробнее</Button>*/}
+                    </CardActions>
+                  </Card>
+                ))}
+              </Grid>
             </Grid>
-            <Grid container justifyContent="center" spacing={spacing}>
-              {child.map(item => (
-                <Card className={classes.root}>
-                  <CardContent>
-                    <Typography>
-                      {/*<img className='img' src={item.imageURL}/>*/}
-                      <img className='img' src={item.imageURL}/>
-                    </Typography>
-                    <Typography variant="h5" component="h2">
-                    </Typography>
 
-                    <Typography className={classes.pos} color="textSecondary">
-                      <h3>{item.name}</h3>
-                    </Typography>
+          </Container>
 
-                    <Typography className={classes.pos} color="textSecondary">
-                      <h4>{item.age}</h4>
-                    </Typography>
-
-                    <Typography className={classes.pos} color="textSecondary">
-                      <h4>{item.gender}</h4>
-                    </Typography>
-
-                  </CardContent>
-                  <CardActions>
-                    {/*<Button size="small">Читать подробнее</Button>*/}
-                  </CardActions>
-                </Card>
-              ))}
-            </Grid>
-          </Grid>
-
-        </Container>
-
-      </div>
-    )
-  );
-
+        </div>
+      )
+    );
+  }
 }
 
 export default Child;

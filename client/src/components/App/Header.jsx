@@ -154,18 +154,7 @@ function Header() {
                 </NavLink>
               </Button>
 
-             {/* <Button color="inherit">
-                <NavLink
-                  className={classnames(
-                    classes.btnVolonters,
-                    pathname === "/users" && classes.linkActive
-                  )}
-                  to={`/users`}
-                >
-                  {" "}
-                  Волонтеры
-                </NavLink>
-              </Button>*/}
+
             </Typography>
             <Button color="inherit">
               <NavLink
@@ -223,21 +212,22 @@ function Header() {
                 to={`/notes/all`}
               >
                 {" "}
-                Мероприятия
+                Дети
               </NavLink>
             </Button>
             <Button color="inherit">
               <NavLink
                 className={classnames(
                   classes.btnVolonters,
-                  pathname === "/users" && classes.linkActive
+                  pathname === "/notes/all" && classes.linkActive
                 )}
-                to={`/users`}
+                to={`/notes/all`}
               >
                 {" "}
-                Волонтеры
+             Событие
               </NavLink>
             </Button>
+
           </Typography>
           <Button color="inherit" disableElevation>
             <NavLink

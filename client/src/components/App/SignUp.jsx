@@ -62,8 +62,8 @@ export default function SignUp() {
   const history = useHistory();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(createUser(login, password, name, email, history));
+     e.preventDefault();
+    dispatch(createUser( login, password, name, email, history ));
   };
 
   const classes = useStyles();
