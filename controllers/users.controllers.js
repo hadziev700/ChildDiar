@@ -31,6 +31,8 @@ module.exports.usersController = {
       const user = await User.create({
         login: login,
         password: hash,
+        tel:req.body.tel,
+        imageURL:req.body.imageURL,
         name:  name,
         email:  email
       });

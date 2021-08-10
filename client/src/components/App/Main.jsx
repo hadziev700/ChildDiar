@@ -5,6 +5,7 @@ import SignUp from './SignUp';
 import Admin from './Admin/Admin';
 import Child from './Child';
 import Event from './Event';
+import Users from './Users';
 
 
 function Main(props) {
@@ -21,14 +22,20 @@ function Main(props) {
           <Route  path="/registration" exact>
             <SignUp/>
           </Route>
-         {/* <Route path="/admin" exact>
+          <Route path="/admin" exact>
             <Admin/>
-          </Route>*/}
+          </Route>
             <Route path="/notes/all" exact>
               <Child/>
             </Route>
           <Route path="/event" exact>
             <Event/>
+          </Route>
+          <Route path="/eee" exact>
+            <Event/>
+          </Route>
+          <Route path="/admin" exact>
+            <Users/>
           </Route>
         </Switch>
       </Container>

@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-//import logo from "./logo-white.svg";
+import logo from "../../logotype.png";
 import { useDispatch, useSelector } from "react-redux";
 //import { loadCategories } from "../../redux/features/categories";
 import { NavLink, useLocation } from "react-router-dom";
@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Header() {
-  const token = useSelector((state) => state.application.token);
+  const token = useSelector((state) => state.application.token); // прописываем для авторизованных пользователей
   const [isLoggedOut, setIsLoggedOut] = useState(true);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -122,12 +122,12 @@ function Header() {
                 aria-label="menu"
               >
                 <img
-                 // src={logo}
+                  src={logo}
                   alt='logo'
                 />
               </IconButton>
             </NavLink>
-            <Typography variant="h6" className={classes.title}>
+           {/* <Typography variant="h6" className={classes.title}>
               <Button color="inherit">
                 <NavLink
                   className={classnames(
@@ -155,7 +155,7 @@ function Header() {
               </Button>
 
 
-            </Typography>
+            </Typography>*/}
             <Button color="inherit">
               <NavLink
                 className={classnames(
@@ -197,12 +197,12 @@ function Header() {
               aria-label="menu"
             >
               <img
-               // src={logo}
+                src={logo}
                 alt='logo'
               />
             </IconButton>
           </NavLink>
-          <Typography variant="h6" className={classes.title}>
+          {/*<Typography variant="h6" className={classes.title}>
             <Button color="inherit">
               <NavLink
                 className={classnames(
@@ -215,20 +215,48 @@ function Header() {
                 Дети
               </NavLink>
             </Button>
+
             <Button color="inherit">
               <NavLink
                 className={classnames(
                   classes.btnVolonters,
-                  pathname === "/notes/all" && classes.linkActive
+                  pathname === "/rod" && classes.linkActive
                 )}
-                to={`/notes/all`}
+                to={`/rod`}
+              >
+                {" "}
+                Родители
+              </NavLink>
+            </Button>
+
+            <Button color="inherit">
+              <NavLink
+                className={classnames(
+                  classes.btnVolonters,
+                  pathname === "/event" && classes.linkActive
+                )}
+                to={`/event`}
               >
                 {" "}
              Событие
               </NavLink>
             </Button>
 
-          </Typography>
+          </Typography>*/}
+
+          {/*<Button color="inherit">
+            <NavLink
+              className={classnames(
+                classes.btnVolonters,
+                pathname === "/eee" && classes.linkActive
+              )}
+              to={`/eee`}
+            >
+              {" "}
+              Добавление
+            </NavLink>
+          </Button>*/}
+
           <Button color="inherit" disableElevation>
             <NavLink
               className={classnames(

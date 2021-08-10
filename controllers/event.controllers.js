@@ -3,7 +3,7 @@ const Child =require('../models/Child.model')
 module.exports.eventController = {
   getAll: async (req, res) => {
     try {
-      const event = await Event.find().populate( "child")
+      const event = await Event.find()
 
       return res.json(event);
     } catch (e) {

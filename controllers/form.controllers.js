@@ -3,7 +3,7 @@ const Form = require('../models/Form.model')
  const controllers = {
   getForm: async (req,res) => {
     try {
-      const form = await Form.find()
+      const form = await Form.find().populate("user").populate( "child").populate("event")
       res.json(form)
     } catch (e) {
       return res.status(400).json({

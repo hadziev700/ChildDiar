@@ -3,39 +3,39 @@ const initialState = {
   loading: true,
 };
 
-export default function childReducer(state = initialState, action) {
+export default function formReducer(state = initialState, action) {
   switch (action.type) {
-    case "child/load/pending":
+    case "form/load/pending":
       return {
         ...state,
         loading: true,
       };
 
-    case "child/load/fulfilled":
+    case "form/load/fulfilled":
       return {
         ...state,
         loading: false,
         items: action.payload,
       };
 
-    case "child/post/pending":
+    case "form/post/pending":
       return {
         ...state,
         loading: true,
       };
-    case "child/post/fulfilled":
+    case "form/post/fulfilled":
       return {
         ...state,
         loading: false,
         items: [...state.items, action.payload],
       };
 
-    case "child/edit/pending":
+    case "form/edit/pending":
       return {
         ...state,
         editing: true,
       };
-    case "child/edit/fulfilled":
+    case "form/edit/fulfilled":
       return {
         ...state,
         editing: false,
@@ -49,12 +49,12 @@ export default function childReducer(state = initialState, action) {
           return report;
         }),
       };
-    case "child/delete/pending":
+    case "form/delete/pending":
       return {
         ...state,
         editing: true,
       };
-    case "child/delete/fulfilled":
+    case "form/delete/fulfilled":
       return {
         ...state,
         editing: false,
@@ -73,41 +73,40 @@ export default function childReducer(state = initialState, action) {
   }
 }
 
-export const loadChild = () => {
+export const loadForm = () => {
   return async (dispatch) => {
-    dispatch({type:"child/load/pending"})
+    dispatch({type:"form/load/pending"})
 
     const response = await fetch(
-      `http://localhost:4000/child`
+      `http://localhost:4000/form`
     );
     const json = await response.json();
 
     dispatch({
-      type:"child/load/fulfilled",
+      type:"form/load/fulfilled",
       payload: json,
     });
   }
 };
 
-
-
-export const postDoctor = (data) => {
+export const postForm = (data) => {
   return async (dispatch) => {
-    dispatch({ type: "child/create/pending" });
-    const response = await fetch("http://localhost:4000/child", {
+    dispatch({ type: "form/create/pending" });
+    const response = await fetch("http://localhost:3005/form", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        imageURL: data.imageURL,
-        name: data.name,
-        gender:data.gender,
+        text:data.text,
+        user:data.user,
+        child:data.child,
+        event:data.event
       }),
     });
     const json = await response.json();
     dispatch({
-      type: "child/create/fulfilled",
+      type: "form/create/fulfilled",
       payload: json,
     });
     window.location.reload();
@@ -115,13 +114,13 @@ export const postDoctor = (data) => {
 };
 
 
-export const deleteDoctor = (id) => {
-  return async (dispatch) => {
-    dispatch({ type: "child/delete/pending" });
 
-    await fetch(`http://localhost:4000/child/${id}`, {
-      method: "DELETE",
-    });
-    dispatch({ type: "child/delete/fulfilled", payload: id });
-  };
-};
+
+
+
+
+
+
+
+
+

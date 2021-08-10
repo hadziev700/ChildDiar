@@ -89,6 +89,21 @@ export const loadEvent = () => {
   }
 };
 
+export const postEvent = () => {
+  return async (dispatch) => {
+    dispatch({type:"event/load/pending"})
+
+    const response = await fetch(
+      `http://localhost:3005/events`
+    );
+    const json = await response.json();
+
+    dispatch({
+      type:"event/load/fulfilled",
+      payload: json,
+    });
+  }
+};
 
 
 

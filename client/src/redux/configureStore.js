@@ -5,6 +5,8 @@ import application from './features/application';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import childReducer from './features/child';
 import eventReducer from './features/event';
+import usersReducer from './features/users';
+import formReducer from './features/form'
 
 const logger = createLogger({
   diff: true,
@@ -16,6 +18,8 @@ export const store = createStore(
     child:childReducer,
     event:eventReducer,
     application: application,
+    users: usersReducer,
+    form: formReducer,
   }), composeWithDevTools(
     applyMiddleware(thunk, logger)
   )
