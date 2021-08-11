@@ -5,7 +5,7 @@ const childSchema = new Schema (
   {
     imageURL: {
       type: String,
-      required:true
+      required:false
     },
     name: {
       type: String,

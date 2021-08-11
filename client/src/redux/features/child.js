@@ -91,18 +91,21 @@ export const loadChild = () => {
 
 
 
-export const postDoctor = (data) => {
-  return async (dispatch) => {
+export const postChild = (data) => {
+  return async (dispatch, getState) => {
     dispatch({ type: "child/create/pending" });
-    const response = await fetch("http://localhost:4000/child", {
+    const state = getState();
+    const response = await fetch('http://localhost:4000/child', {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${state.application.token}`,
         "Content-type": "application/json",
       },
       body: JSON.stringify({
         imageURL: data.imageURL,
         name: data.name,
         gender:data.gender,
+        //user:req.body.user
       }),
     });
     const json = await response.json();
@@ -114,8 +117,7 @@ export const postDoctor = (data) => {
   };
 };
 
-
-export const deleteDoctor = (id) => {
+export const deleteChild = (id) => {
   return async (dispatch) => {
     dispatch({ type: "child/delete/pending" });
 
@@ -125,3 +127,5 @@ export const deleteDoctor = (id) => {
     dispatch({ type: "child/delete/fulfilled", payload: id });
   };
 };
+
+

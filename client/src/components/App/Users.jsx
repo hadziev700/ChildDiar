@@ -119,16 +119,6 @@ function Users() {
     dispatch(loadUsers());
   }, [dispatch]);
 
-  /*  useEffect(() => {
-    document.title = "Волонтеры";
-  });
-  useEffect(() => {
-    dispatch(loadUserNotes());
-  }, [dispatch]);
-
-  if (loading) {
-    return <Preloader />;
-  }*/
   return (
     <Container className={classes.cardGrid} maxWidth="1440px">
       <Grid container spacing={4} className={classes.gridSearch}>

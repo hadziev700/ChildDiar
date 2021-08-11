@@ -76,9 +76,8 @@ export default function formReducer(state = initialState, action) {
 export const loadForm = () => {
   return async (dispatch) => {
     dispatch({type:"form/load/pending"})
-
     const response = await fetch(
-      `http://localhost:4000/form`
+      `http://localhost:4000/form`      /*"http://localhost:4000/form/${id}" */
     );
     const json = await response.json();
 
@@ -92,16 +91,16 @@ export const loadForm = () => {
 export const postForm = (data) => {
   return async (dispatch) => {
     dispatch({ type: "form/create/pending" });
-    const response = await fetch("http://localhost:3005/form", {
+    const response = await fetch("http://localhost:4000/form", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        text:data.text,
-        user:data.user,
+        // text:data.text,
+        // user:data.user,
         child:data.child,
-        event:data.event
+        //event:data.event
       }),
     });
     const json = await response.json();
@@ -109,7 +108,7 @@ export const postForm = (data) => {
       type: "form/create/fulfilled",
       payload: json,
     });
-    window.location.reload();
+    //window.location.reload();
   };
 };
 

@@ -6,16 +6,16 @@ import Admin from './Admin/Admin';
 import Child from './Child';
 import Event from './Event';
 import Users from './Users';
-
+import Home from './Home'
 
 function Main(props) {
   return (
     <div>
       <Container maxWidth="xl">
         <Switch>
-          {/*<Route exact path="/">
+          <Route exact path="/">
             <Home />
-          </Route>*/}
+          </Route>
           <Route path="/login" exact>
             <SignIn/>
           </Route>

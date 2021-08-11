@@ -202,7 +202,7 @@ function Header() {
               />
             </IconButton>
           </NavLink>
-          {/*<Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             <Button color="inherit">
               <NavLink
                 className={classnames(
@@ -216,33 +216,33 @@ function Header() {
               </NavLink>
             </Button>
 
-            <Button color="inherit">
-              <NavLink
-                className={classnames(
-                  classes.btnVolonters,
-                  pathname === "/rod" && classes.linkActive
-                )}
-                to={`/rod`}
-              >
-                {" "}
-                Родители
-              </NavLink>
-            </Button>
+            {/*<Button color="inherit">*/}
+            {/*  <NavLink*/}
+            {/*    className={classnames(*/}
+            {/*      classes.btnVolonters,*/}
+            {/*      pathname === "/rod" && classes.linkActive*/}
+            {/*    )}*/}
+            {/*    to={`/rod`}*/}
+            {/*  >*/}
+            {/*    {" "}*/}
+            {/*    Родители*/}
+            {/*  </NavLink>*/}
+            {/*</Button>*/}
 
-            <Button color="inherit">
-              <NavLink
-                className={classnames(
-                  classes.btnVolonters,
-                  pathname === "/event" && classes.linkActive
-                )}
-                to={`/event`}
-              >
-                {" "}
-             Событие
-              </NavLink>
-            </Button>
+            {/*<Button color="inherit">*/}
+            {/*  <NavLink*/}
+            {/*    className={classnames(*/}
+            {/*      classes.btnVolonters,*/}
+            {/*      pathname === "/event" && classes.linkActive*/}
+            {/*    )}*/}
+            {/*    to={`/event`}*/}
+            {/*  >*/}
+            {/*    {" "}*/}
+            {/* Событие*/}
+            {/*  </NavLink>*/}
+            {/*</Button>*/}
 
-          </Typography>*/}
+          </Typography>
 
           {/*<Button color="inherit">
             <NavLink

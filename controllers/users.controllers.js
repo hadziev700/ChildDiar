@@ -16,6 +16,8 @@ module.exports.usersController = {
   getUsersById: async (req, res) => {
     try {
       const user = await User.findById(req.user.id);
+      console.log(req.user)
+
       res.json(user);
     } catch (e) {
       res.json(e.message);
@@ -65,8 +67,8 @@ module.exports.usersController = {
 
       const token = await jwt.sign(payload, process.env.SECRET_JWT_KEY, {
         expiresIn: "24h"
-      })
 
+      })
       res.json({token})
     }  catch (e) {
       res.json({error: e.message});

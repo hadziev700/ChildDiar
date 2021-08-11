@@ -41,7 +41,8 @@ module.exports.childController = {
         name: req.body.name,
         age: req.body.age,
         gender: req.body.gender,
-        user: req.body.user,
+        user: req.user
+        //user: req.user._id,
       });
       // await product.save();
       res.json(childPost);

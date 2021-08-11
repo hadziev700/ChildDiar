@@ -5,6 +5,7 @@ import { Button, Card, CardActions, CardContent, Container, Grid, Paper } from '
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { loadForm } from '../../../redux/features/form';
+import AddChild from '../AddChild';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,9 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 14,
+    textAlign: 'center',
   },
   pos: {
     marginBottom: 12,
+    textAlign: 'center'
   },
   paper: {
     padding: theme.spacing(2),
@@ -36,15 +39,15 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Record(props) {
+  const [open, setOpen] = React.useState(false);
   const form = useSelector(state => state.form.items)
   const dispatch = useDispatch();
   const classes = useStyles();
   const [spacing, setSpacing] = React.useState(2);
 
- /* const [img, setImg] = useState()
-  const [name, setName] = useState()
-  const [age, setAge] = useState()
-  const [img, setImg] = useState()*/
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   useEffect(() => {
     dispatch(loadForm());
@@ -58,6 +61,9 @@ function Record(props) {
             <Grid item xs={12}>
               <Grid item xs={12}>
                 <Paper className={classes.paper}>АНКЕТА</Paper>
+                <Button onClick={handleClickOpen}>
+                  Добавить анкету
+                </Button>
               </Grid>
               <Grid container justifyContent="center" spacing={spacing}>
                   <Card className={classes.root}>
@@ -65,7 +71,7 @@ function Record(props) {
 
 
                       <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        <h2>Нужна ли эта строка??????????: {item.text}</h2>
+                       {/* <h2>Нужна ли эта строка??????????: {item.text}</h2>*/}
                       </Typography>
 
                       <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -112,6 +118,7 @@ function Record(props) {
           </Container>
         )
       })}
+      <AddChild open={open} setOpen={setOpen}/>
     </div>
   )
 }
