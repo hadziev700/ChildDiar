@@ -1,9 +1,9 @@
 const Event = require('../models/Event.model');
-const Child =require('../models/Child.model')
+
 module.exports.eventController = {
   getAll: async (req, res) => {
     try {
-      const event = await Event.find()
+      const event = await Event.find().populate('child')
 
       return res.json(event);
     } catch (e) {

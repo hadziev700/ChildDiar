@@ -4,7 +4,7 @@ const eventSchema = new Schema(
   {
     date: {
       type: String,
-      required: true,
+      required: false,
     },
     text: {
       type: String,

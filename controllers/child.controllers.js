@@ -4,7 +4,7 @@ const User = require("../models/User.model");
 module.exports.childController = {
   getAll: async (req, res) => {
     try {
-      const child = await Child.find();
+      const child = await Child.find().populate("user")
 
       return res.json(child);
     } catch (e) {
@@ -15,18 +15,9 @@ module.exports.childController = {
   },
 
   getChildById: async (req, res) => {
-    const { id } = req.params;
-
     try {
-      const child = await Child.findById(req.params.id);
-
-      if (!child) {
-        return res.status(404).json({
-          error: "Ребенок с таким ID не найден",
-        });
-      }
-
-      return res.json(child);
+      const childId = await Child.findById(req.params.id);
+      res.json(childId);
     } catch (e) {
       return res.status(400).json({
         error: e.toString(),

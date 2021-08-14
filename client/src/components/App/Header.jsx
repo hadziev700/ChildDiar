@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appbar: {
-    backgroundColor: "#000841",
+    //backgroundColor: "#000841",
     borderRadius: 4,
     width: "97%",
     margin: "auto",
@@ -50,15 +50,15 @@ const useStyles = makeStyles((theme) => ({
   btnVolonters: {
     textDecoration: "none",
     fontWeight: "bold",
-    color: "white",
+    color: "blue",   // дети
     marginLeft: 75,
     marginRight: 75,
-    backgroundColor: "#000841",
+    //backgroundColor: "#000841", //
   },
   btnLogUp: {
     padding: "0 5px",
     textDecoration: "none",
-    color: "#000841",
+    //color: "#000841",
     backgroundColor: "#fff",
     borderRadius: "3px",
   },
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textDecoration: "none",
   color: "white",
-  backgroundColor: "#000841",
+  //backgroundColor: "#000841",
 }));
 
 function Header() {

@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Grid, Paper } from '@material-ui/core';
 import { loadChild } from '../../redux/features/child';
+import { NavLink, useParams } from 'react-router-dom';
+import AddChild from './AddChild';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,21 +44,33 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     marginTop: 20,
   },
+  img:{
+    height: 200,
+
+  }
 }));
 
 
 
 
 function Child(props) {
+  const [open, setOpen] = React.useState(false);
   const token = useSelector(state => state.application.token)
+  const { id } = useParams();
   const [spacing, setSpacing] = React.useState(2);
   const child = useSelector(state => state.child.items)
   const dispatch = useDispatch();
   const classes = useStyles();
 
+
+
   useEffect(() => {
     dispatch(loadChild());
   }, [dispatch])
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   if(token) {
     return (
@@ -67,28 +81,35 @@ function Child(props) {
               <Grid item xs={12}>
                 <Paper className={classes.paper}>Дети</Paper>
               </Grid>
+              <Button onClick={handleClickOpen}>
+                Добавить ребенка
+              </Button>
               <Grid container justifyContent="center" spacing={spacing}>
                 {child.map(item => (
                   <Card className={classes.root}>
                     <CardContent>
-                      <Typography>
-                        {/*<img className='img' src={item.imageURL}/>*/}
-                        <img className='img' src={item.imageURL}/>
-                      </Typography>
-                      <Typography variant="h5" component="h2">
+
+                      <NavLink to={`/child/${item._id}`}>
+                        <Typography style={{height:'100%'}}>
+                          <img className='img' src={item.imageURL}/>
+                        </Typography>
+                      </NavLink>
+
+                      <Typography style={{textAlign:'center'}} className={classes.pos} color="textSecondary">
+                        <h3> имя:{item.name}</h3>
                       </Typography>
 
-                      <Typography className={classes.pos} color="textSecondary">
-                        <h3>{item.name}</h3>
+                      <Typography style={{textAlign:'center'}} color="textSecondary">
+                        <h4> Возрат:{item.age}</h4>
                       </Typography>
 
-                      <Typography className={classes.pos} color="textSecondary">
-                        <h4>{item.age}</h4>
-                      </Typography>
+                       {/*<Typography style={{textAlign:'center'}} color="textSecondary">
+                        <h4>{item.user.name}</h4>
+                      </Typography>*/}
 
-                      <Typography className={classes.pos} color="textSecondary">
-                        <h4>{item.gender}</h4>
-                      </Typography>
+                     {/* <Typography style={{textAlign:'center'}} color="textSecondary">
+                        <h4>Пол:{item.gender}</h4>
+                      </Typography>*/}
 
                     </CardContent>
                     <CardActions>
@@ -96,6 +117,7 @@ function Child(props) {
                     </CardActions>
                   </Card>
                 ))}
+                <AddChild open={open} setOpen={setOpen}/>
               </Grid>
             </Grid>
 

@@ -5,7 +5,7 @@ const router = Router();
 
 router.get("/events",eventController.getAll);
 router.get('/events/:id',eventController.getEventById)
-router.post("/events",eventController.createEvent);
+router.post("/event",eventController.createEvent);
 router.delete('/events/:id',eventController.removeEvent)
 router.patch('/events/:id',eventController.editEvent)
 

@@ -7,6 +7,7 @@ import Child from './Child';
 import Event from './Event';
 import Users from './Users';
 import Home from './Home'
+import IdChild from './IdChild';
 
 function Main(props) {
   return (
@@ -27,6 +28,9 @@ function Main(props) {
           </Route>
             <Route path="/notes/all" exact>
               <Child/>
+            </Route>
+            <Route path="/child/:id">
+               <IdChild/>
             </Route>
           <Route path="/event" exact>
             <Event/>

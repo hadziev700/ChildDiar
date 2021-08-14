@@ -104,6 +104,7 @@ export const postChild = (data) => {
       body: JSON.stringify({
         imageURL: data.imageURL,
         name: data.name,
+        age:data.age,
         gender:data.gender,
         //user:req.body.user
       }),

@@ -97,10 +97,11 @@ export const postForm = (data) => {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        // text:data.text,
-        // user:data.user,
+        text:data.text,
+        user:data.user,
         child:data.child,
-        //event:data.event
+        event:data.event
+
       }),
     });
     const json = await response.json();

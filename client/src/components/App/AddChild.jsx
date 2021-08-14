@@ -80,12 +80,12 @@ function AddChild({open, setOpen}) {
     setGender(e.target.value)
   }
 
-  const handleAddUser = (e) => {
-    setUser(e.target.value)
-  }
+  // const handleAddUser = (e) => {
+  //   setUser(e.target.value)
+  // }
 
   const handlePostChild = () => {
-    dispatch(postChild({name: name, imageURL: imageURL, age:age, gender:gender, user:user}))
+    dispatch(postChild({name: name, imageURL: imageURL, age:age, gender:gender}))
   }
 
   const handleDelete = (id) => {
@@ -189,17 +189,17 @@ function AddChild({open, setOpen}) {
 
 
           />
-          <TextField
-            value={user}
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Родитель"
-            type="text"
-            fullWidth
-            onChange={handleAddUser}
+          {/*<TextField*/}
+          {/*  value={user}*/}
+          {/*  autoFocus*/}
+          {/*  margin="dense"*/}
+          {/*  id="name"*/}
+          {/*  label="Родитель"*/}
+          {/*  type="text"*/}
+          {/*  fullWidth*/}
+          {/*  onChange={handleAddUser}*/}
 
-          />
+          {/*/>*/}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

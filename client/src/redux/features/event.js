@@ -75,44 +75,38 @@ export default function eventReducer(state = initialState, action) {
 
 export const loadEvent = () => {
   return async (dispatch) => {
-    dispatch({type:"event/load/pending"})
+    dispatch({ type: "event/load/pending" });
 
-    const response = await fetch(
-      `http://localhost:4000/events`
-    );
+    const response = await fetch(`http://localhost:4000/events`);
     const json = await response.json();
 
     dispatch({
-      type:"event/load/fulfilled",
+      type: "event/load/fulfilled",
       payload: json,
     });
-  }
+  };
 };
 
-export const postEvent = () => {
-  return async (dispatch) => {
-    dispatch({type:"event/load/pending"})
-
-    const response = await fetch(
-      `http://localhost:3005/events`
-    );
+export const postEvent = (data) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: "event/create/pending" });
+    const state = getState();
+    const response = await fetch('http://localhost:4000/event', {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${state.application.token}`,
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        text: data.text,
+        child: data.child._id
+      }),
+    });
     const json = await response.json();
-
     dispatch({
-      type:"event/load/fulfilled",
+      type: "event/post/fulfilled",
       payload: json,
     });
-  }
+    window.location.reload();
+  };
 };
-
-
-
-
-
-
-
-
-
-
-
-

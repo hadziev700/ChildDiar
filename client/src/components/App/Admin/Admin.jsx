@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -62,8 +63,13 @@ function Record(props) {
               <Grid item xs={12}>
                 <Paper className={classes.paper}>АНКЕТА</Paper>
                 <Button onClick={handleClickOpen}>
+                  Добавить ребенка
+                </Button>
+
+                <Button onClick={handleClickOpen}>
                   Добавить анкету
                 </Button>
+
               </Grid>
               <Grid container justifyContent="center" spacing={spacing}>
                   <Card className={classes.root}>
@@ -101,8 +107,6 @@ function Record(props) {
                       <Typography className={classes.pos} color="textSecondary">
                         <h3>Что произошло: {item.event.text}</h3>
                       </Typography>
-
-
 
                      {/* <Typography className={classes.pos} color="textSecondary">
                         <h3>{item.patient}</h3>
