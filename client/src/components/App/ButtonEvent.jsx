@@ -55,6 +55,8 @@ function ButtonEvent({open, setOpen, child}) {
 
   const [date, setDate] = useState("")
   const [text, setText] = useState("")
+  //const [child, setChild] = useState("")
+
 
   // для открытия закрытия
   const handleClose = () => {

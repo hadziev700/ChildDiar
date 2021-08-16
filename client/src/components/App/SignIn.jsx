@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../../redux/features/application";
 import { useHistory } from "react-router-dom";
 //import video from "../../../src/signIn.mp4"
-//import img from "../../../src/signInImg.png"
+import img from "../../../src/components/as.jpg"
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -43,7 +43,8 @@ const useStyles = makeStyles((theme) => ({
   },
   slideImg: {
     width: "735px",
-    height: "calc(100vh - 250px)"
+    height: "calc(110vh - 250px)",
+    marginTop:30,
   }
 }));
 
@@ -88,7 +89,7 @@ export default function SignIn() {
             loop={true}
             playsInline={true}
             muted={true}
-           // poster={img}
+            poster={img}
           />
         </div>
         <div className={classes.paper}>

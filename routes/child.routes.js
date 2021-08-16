@@ -4,7 +4,7 @@ const authMiddleware = require('../middlewares/auth.middleware');
 
 const router = Router();
 
-router.get('/child',childController.getAll);
+router.get('/child',authMiddleware,childController.getAll);
 router.get('/child/:id',childController.getChildById);
 router.post('/child',childController.createChild); //authMiddleware
 router.patch('/child/:id',childController.editChild);

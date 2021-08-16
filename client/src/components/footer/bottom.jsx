@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -10,6 +10,9 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import CallIcon from "@material-ui/icons/Call";
 import { Box } from "@material-ui/core";
 import Footer from './Footer'
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { logout } from '../../redux/features/application';
 const useStyles = makeStyles({
   root: {
     flexGrow: 6,
@@ -82,10 +85,28 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleBottomNavigation() {
+
+
+function Bottom(props) {
+  const token = useSelector((state) => state.application.token); // прописываем для авторизованных пользователей
+  const [isLoggedOut, setIsLoggedOut] = useState(true);
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    setIsLoggedOut(false);
+    dispatch(logout());
+  };
+
+  if (!token) {
+    return (
+      <div>a</div>
+    )
+  }
   return (
     <Box className={classes.bottom} style={{ marginTop: "200px" }}>
       <BottomNavigation
@@ -125,4 +146,7 @@ export default function SimpleBottomNavigation() {
       </BottomNavigation>
     </Box>
   );
+
 }
+
+export default Bottom;

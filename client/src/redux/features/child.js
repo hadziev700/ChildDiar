@@ -74,14 +74,19 @@ export default function childReducer(state = initialState, action) {
 }
 
 export const loadChild = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const state = getState();
     dispatch({type:"child/load/pending"})
 
     const response = await fetch(
-      `http://localhost:4000/child`
+      `http://localhost:4000/child`, {
+        headers: {
+          Authorization: `Bearer ${state.application.token}`,
+          "Content-type": "application/json",
+        }
+      }
     );
     const json = await response.json();
-
     dispatch({
       type:"child/load/fulfilled",
       payload: json,
@@ -106,7 +111,6 @@ export const postChild = (data) => {
         name: data.name,
         age:data.age,
         gender:data.gender,
-        //user:req.body.user
       }),
     });
     const json = await response.json();

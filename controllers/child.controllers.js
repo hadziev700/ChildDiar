@@ -4,7 +4,9 @@ const User = require("../models/User.model");
 module.exports.childController = {
   getAll: async (req, res) => {
     try {
-      const child = await Child.find().populate("user")
+      const child = await Child.find({
+        user: req.user.id
+      }).populate("user")
 
       return res.json(child);
     } catch (e) {
@@ -13,7 +15,6 @@ module.exports.childController = {
       });
     }
   },
-
   getChildById: async (req, res) => {
     try {
       const childId = await Child.findById(req.params.id);
@@ -24,7 +25,6 @@ module.exports.childController = {
       });
     }
   },
-
   createChild: async (req, res) => {
     try {
       const childPost = await Child.create({
@@ -32,10 +32,9 @@ module.exports.childController = {
         name: req.body.name,
         age: req.body.age,
         gender: req.body.gender,
-        user: req.user
-        //user: req.user._id,
+        //user: req.user
+
       });
-      // await product.save();
       res.json(childPost);
     } catch (e) {
       return res.status(400).json({

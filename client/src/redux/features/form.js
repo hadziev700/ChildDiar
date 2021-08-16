@@ -74,11 +74,15 @@ export default function formReducer(state = initialState, action) {
 }
 
 export const loadForm = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+
     dispatch({type:"form/load/pending"})
-    const response = await fetch(
-      `http://localhost:4000/form`      /*"http://localhost:4000/form/${id}" */
-    );
+    const response = await fetch(`http://localhost:4000/form`, {
+      headers: {
+        Authorization: `Bearer ${state.application.token}`
+      }
+    });
     const json = await response.json();
 
     dispatch({

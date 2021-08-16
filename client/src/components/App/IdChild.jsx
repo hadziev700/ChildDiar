@@ -40,10 +40,15 @@ function IdChild() {
       {" "}
       <Button onClick={handleClickOpen}>добавить события</Button>
       <img style={{ marginTop: 30, marginLeft: 120 }} src={child?.imageURL} />
-      <div>{child?.name}</div>
-      <div>{child?.age}</div>
-      <div>{JSON.stringify(child)}</div>
-      <div>{JSON.stringify(event)}</div>
+      <Typography align='center' variant='h3' > Имя:{child?.name}</Typography>
+      <Typography align='center' variant='h3' > Возраст:{child?.age}</Typography>
+      <Typography align='center' variant='h3' > Пол:{child?.gender}</Typography>
+      {/*<Typography align='center' variant='h3' > событие:{event.text}</Typography>*/}
+
+      {/*<div>{child?.age}</div>*/}
+      {/*<Typography align='center' variant='h3' > {event}</Typography>*/}
+      {/*<div>{JSON.stringify(child)}</div>
+      <div>{JSON.stringify(event)}</div>*/}
       <ButtonEvent open={open} setOpen={setOpen} child={child} />
     </div>
   );

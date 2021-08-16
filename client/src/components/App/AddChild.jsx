@@ -56,7 +56,7 @@ function AddChild({open, setOpen}) {
   const [name, setName] = useState("")
   const [age, setAge] = useState("")
   const [gender, setGender] = useState("")
-  const [user, setUser] = useState("")
+
 
 
 
@@ -80,10 +80,6 @@ function AddChild({open, setOpen}) {
     setGender(e.target.value)
   }
 
-  // const handleAddUser = (e) => {
-  //   setUser(e.target.value)
-  // }
-
   const handlePostChild = () => {
     dispatch(postChild({name: name, imageURL: imageURL, age:age, gender:gender}))
   }
@@ -99,13 +95,7 @@ function AddChild({open, setOpen}) {
   return (
     <div className={classes.container}>
       <Container className={classes.paper}>
-       {/* <grid container spacing={6}>
-          <h3>Админка</h3>
-        </grid>*/}
         <grid container spacing={6} className={classes.addLogo}>
-          {/*<Fab variant="outlined" color="primary" onClick={handleClickOpen}>*/}
-          {/*  <RiPlayListAddFill />*/}
-          {/*</Fab>*/}
         </grid>
       </Container>
       <TableContainer component={classes.paper}>
@@ -173,8 +163,6 @@ function AddChild({open, setOpen}) {
             type="text"
             fullWidth
             onChange={handleAddAge}
-
-
           />
           <TextField
             value={gender}
@@ -185,21 +173,7 @@ function AddChild({open, setOpen}) {
             type="text"
             fullWidth
             onChange={handleAddGender}
-
-
-
           />
-          {/*<TextField*/}
-          {/*  value={user}*/}
-          {/*  autoFocus*/}
-          {/*  margin="dense"*/}
-          {/*  id="name"*/}
-          {/*  label="Родитель"*/}
-          {/*  type="text"*/}
-          {/*  fullWidth*/}
-          {/*  onChange={handleAddUser}*/}
-
-          {/*/>*/}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
