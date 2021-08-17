@@ -9,7 +9,7 @@ import "../../index.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { logout } from '../../redux/features/application';
-import logo from '../../components/sign.jpg'
+import logo from '../../components/kk.jpg'
 import { makeStyles } from '@material-ui/core/styles';
 /*style={{width:'100%',
   height: '100%', marginTop: 40}}*/

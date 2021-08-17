@@ -99,7 +99,7 @@ export const postEvent = (data) => {
       },
       body: JSON.stringify({
         text: data.text,
-        child: data.child._id
+        child: data.id
       }),
     });
     const json = await response.json();
@@ -108,5 +108,16 @@ export const postEvent = (data) => {
       payload: json,
     });
     window.location.reload();
+  };
+};
+
+export const deleteEvent = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: "event/delete/pending" });
+
+    await fetch(`http://localhost:4000/events/${id}`, {
+      method: "DELETE",
+    });
+    dispatch({ type: "event/delete/fulfilled", payload: id });
   };
 };

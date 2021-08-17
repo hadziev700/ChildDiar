@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { loadForm } from '../../../redux/features/form';
 import AddChild from '../AddChild';
+import { loadUserChild } from '../../../redux/features/child';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,12 +41,13 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function Record(props) {
+function Admin(props) {
   const [open, setOpen] = React.useState(false);
   const form = useSelector(state => state.form.items)
   const dispatch = useDispatch();
   const classes = useStyles();
   const [spacing, setSpacing] = React.useState(2);
+  const child = useSelector(state => state.child.items)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -54,8 +57,55 @@ function Record(props) {
     dispatch(loadForm());
   }, [dispatch])
 
+  useEffect(() => {
+    dispatch(loadUserChild());
+  }, [dispatch])
+
   return (
+
     <div>
+      <Button onClick={handleClickOpen}>Добавить ребенка</Button>
+      <Grid container justifyContent="center" spacing={spacing}>
+        {child.map((item) => (
+          <Card className={classes.root}>
+            <CardContent>
+              <NavLink to={`/child/${item._id}`}>
+                <Typography style={{ height: "100%" }}>
+                  <img className="img" src={item.imageURL} />
+                </Typography>
+              </NavLink>
+
+              <Typography
+                style={{ textAlign: "center" }}
+                className={classes.pos}
+                color="textSecondary"
+              >
+                <h3> имя:{item.name}</h3>
+              </Typography>
+
+              <Typography
+                style={{ textAlign: "center" }}
+                color="textSecondary"
+              >
+                <h4> Возрат:{item.age}</h4>
+              </Typography>
+
+              {/*<Typography style={{textAlign:'center'}} color="textSecondary">*/}
+              {/*          <h4>{item.user.name}</h4>*/}
+              {/*        </Typography>*/}
+
+               <Typography style={{textAlign:'center'}} color="textSecondary">
+                        <h4>Пол:{item.gender}</h4>
+               </Typography>
+            </CardContent>
+            <CardActions>
+              {/*<Button size="small">Читать подробнее</Button>*/}
+            </CardActions>
+          </Card>
+        ))}
+
+      </Grid>
+
       {form.map(item => {
         return (
           <Container maxWidth="xl">
@@ -127,4 +177,4 @@ function Record(props) {
   )
 }
 
-export default Record;
+export default Admin;

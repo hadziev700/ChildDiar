@@ -16,7 +16,7 @@ const logger = createLogger({
 export const store = createStore(
   combineReducers({
     child:childReducer,
-    event:eventReducer,
+    eventReducer,
     application: application,
     users: usersReducer,
     form: formReducer,

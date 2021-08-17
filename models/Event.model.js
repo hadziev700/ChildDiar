@@ -2,10 +2,10 @@ const { Schema, model } =require("mongoose");
 
 const eventSchema = new Schema(
   {
-    date: {
+/*    date: {
       type: String,
       required: false,
-    },
+    },*/
     text: {
       type: String,
     },

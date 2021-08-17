@@ -72,7 +72,7 @@ function Child(props) {
         <Container maxWidth="xl">
           <Grid item xs={12}>
             <Grid item xs={12}>
-              <Paper className={classes.paper}>Дети</Paper>
+              <Paper className={classes.paper}><h1>Лучшие фотографии</h1></Paper>
             </Grid>
             <Button onClick={handleClickOpen}>Добавить ребенка</Button>
             <Grid container justifyContent="center" spacing={spacing}>
@@ -85,20 +85,20 @@ function Child(props) {
                       </Typography>
                     </NavLink>
 
-                    <Typography
-                      style={{ textAlign: "center" }}
-                      className={classes.pos}
-                      color="textSecondary"
-                    >
-                      <h3> имя:{item.name}</h3>
-                    </Typography>
+                    {/*<Typography*/}
+                    {/*  style={{ textAlign: "center" }}*/}
+                    {/*  className={classes.pos}*/}
+                    {/*  color="textSecondary"*/}
+                    {/*>*/}
+                    {/*  <h3> имя:{item.name}</h3>*/}
+                    {/*</Typography>*/}
 
-                    <Typography
-                      style={{ textAlign: "center" }}
-                      color="textSecondary"
-                    >
-                      <h4> Возрат:{item.age}</h4>
-                    </Typography>
+                    {/*<Typography*/}
+                    {/*  style={{ textAlign: "center" }}*/}
+                    {/*  color="textSecondary"*/}
+                    {/*>*/}
+                    {/*  <h4> Возрат:{item.age}</h4>*/}
+                    {/*</Typography>*/}
 
                     {/*<Typography style={{textAlign:'center'}} color="textSecondary">
                         <h4>{item.user.name}</h4>
@@ -109,7 +109,6 @@ function Child(props) {
                       </Typography>*/}
                   </CardContent>
                   <CardActions>
-                    {/*<Button size="small">Читать подробнее</Button>*/}
                   </CardActions>
                 </Card>
               ))}

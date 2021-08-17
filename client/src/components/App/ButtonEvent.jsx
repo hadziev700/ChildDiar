@@ -47,15 +47,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ButtonEvent({open, setOpen, child}) {
+function ButtonEvent({open, setOpen, id}) {
   const dispatch = useDispatch();
 
-  const event = useSelector((state) => state.event.items);
-  const loading = useSelector((state) => state.event.loading);
+  //const event = useSelector((state) => state.event.items);
+ // const loading = useSelector((state) => state.event.loading);
 
   const [date, setDate] = useState("")
   const [text, setText] = useState("")
-  //const [child, setChild] = useState("")
+  const [child, setChild] = useState("")
 
 
   // для открытия закрытия
@@ -70,12 +70,12 @@ function ButtonEvent({open, setOpen, child}) {
   const handleAddDate = (e) => {
     setDate(e.target.value)
   }
-  // const handleAddChild = (e) => {
-  //   setChild(e.target.value)
-  // }
+  const handleAddChild = (e) => {
+    setChild(e.target.value)
+  }
 
   const handlePostEvent = () => {
-    dispatch(postEvent({date:date, text:text, child:child}))
+    dispatch(postEvent({date, text, child, id}))
   }
 
   const handleDelete = (id) => {
@@ -92,33 +92,34 @@ function ButtonEvent({open, setOpen, child}) {
         <grid container spacing={6} className={classes.addLogo}>
         </grid>
       </Container>
-      <TableContainer component={classes.paper}>
-        <Table size="small" aria-label="a dense table">
-          <TableBody>
-            {event.map((item) => {
-              return (
-                <TableRow>
-                  <TableCell component="th" scope="row">
-                    <Avatar>
-                      <img
-                        className={classes.img}
-                        src={`${item.imageURL}`}
-                        alt="logo"
-                      />
-                    </Avatar>
-                  </TableCell>
-                  <TableCell align="right">{item.text}</TableCell>
-                  <TableCell>
-                    <button onClick={() => handleDelete(item._id)}>
-                      удалить
-                    </button>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      {/*<TableContainer component={classes.paper}>*/}
+      {/*  <Table size="small" aria-label="a dense table">*/}
+      {/*    <TableBody>*/}
+      {/*      {event.map((item) => {*/}
+      {/*        return (*/}
+      {/*          <TableRow>*/}
+      {/*            <TableCell component="th" scope="row">*/}
+      {/*              <Avatar>*/}
+      {/*                <img*/}
+      {/*                  className={classes.img}*/}
+      {/*                  src={`${item.imageURL}`}*/}
+      {/*                  alt="logo"*/}
+      {/*                />*/}
+      {/*              </Avatar>*/}
+      {/*            </TableCell>*/}
+      {/*            <TableCell align="right">{item.text}</TableCell>*/}
+      {/*            <TableCell>*/}
+      {/*              <button onClick={() => handleDelete(item._id)}>*/}
+      {/*                удалить*/}
+      {/*              </button>*/}
+      {/*            </TableCell>*/}
+      {/*          </TableRow>*/}
+      {/*        );*/}
+      {/*      })}*/}
+      {/*    </TableBody>*/}
+      {/*  </Table>*/}
+      {/*</TableContainer>*/}
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -126,6 +127,7 @@ function ButtonEvent({open, setOpen, child}) {
       >
         <DialogTitle id="form-dialog-title">Анкета</DialogTitle>
         <DialogContent>
+
           <DialogContentText>Ведите события</DialogContentText>
 
          {/* <TextField
@@ -149,17 +151,17 @@ function ButtonEvent({open, setOpen, child}) {
             fullWidth
             onChange={handleAddText}
           />
-{/*
-          <TextField
-            value={child}
-            autoFocus
-            margin="dense"
-            id="name"
-            label="ID ребенка"
-            type="text"
-            fullWidth
-            onChange={handleAddChild}
-          />*/}
+
+          {/*<TextField*/}
+          {/*  value={child}*/}
+          {/*  autoFocus*/}
+          {/*  margin="dense"*/}
+          {/*  id="name"*/}
+          {/*  label="ID ребенка"*/}
+          {/*  type="text"*/}
+          {/*  fullWidth*/}
+          {/*  onChange={handleAddChild}*/}
+          {/*/>*/}
 
         </DialogContent>
         <DialogActions>

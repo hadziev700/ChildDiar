@@ -61,6 +61,10 @@ const useStyles = makeStyles((theme) => ({
     //color: "#000841",
     backgroundColor: "#fff",
     borderRadius: "3px",
+    //marginLeft:400,
+
+
+
   },
   btnLogOut: {
     padding: "0 5px",
@@ -212,7 +216,7 @@ function Header() {
                 to={`/notes/all`}
               >
                 {" "}
-                Дети
+                Фото галерея
               </NavLink>
             </Button>
 

@@ -6,7 +6,8 @@ const router = Router();
 
 router.get('/child',authMiddleware,childController.getAll);
 router.get('/child/:id',childController.getChildById);
-router.post('/child',childController.createChild); //authMiddleware
+router.get("/admin/", authMiddleware, childController.getUserChild);
+router.post('/child', authMiddleware, childController.createChild); //authMiddleware
 router.patch('/child/:id',childController.editChild);
 router.delete('/child/:id',childController.removeChild);
 

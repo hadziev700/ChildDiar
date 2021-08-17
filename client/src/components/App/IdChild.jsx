@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Index from "../../index.css";
 import Button from "@material-ui/core/Button";
 import ButtonEvent from "./ButtonEvent";
+import eventReducer, { loadEvent } from '../../redux/features/event';
 
 const useStyles = makeStyles({
   container: {
@@ -22,9 +23,14 @@ function IdChild() {
     setOpen(true);
   };
 
-  const event = useSelector((state) =>
-    state.event.items.find((event) => event.child_id === id)
-  );
+
+  // const event = useSelector((state) =>
+  //   state.event.items.find((event) => event.child_id === id)
+  // );
+
+  const event = useSelector(state => state.eventReducer.items)
+
+
   const child = useSelector((state) => {
     return state.child.items.find((item) => item._id === id);
   });
@@ -35,21 +41,27 @@ function IdChild() {
     dispatch(loadChild());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(loadEvent())
+  }, [dispatch])
+
   return (
     <div className={classes.container}>
       {" "}
       <Button onClick={handleClickOpen}>добавить события</Button>
-      <img style={{ marginTop: 30, marginLeft: 120 }} src={child?.imageURL} />
-      <Typography align='center' variant='h3' > Имя:{child?.name}</Typography>
-      <Typography align='center' variant='h3' > Возраст:{child?.age}</Typography>
-      <Typography align='center' variant='h3' > Пол:{child?.gender}</Typography>
-      {/*<Typography align='center' variant='h3' > событие:{event.text}</Typography>*/}
 
-      {/*<div>{child?.age}</div>*/}
-      {/*<Typography align='center' variant='h3' > {event}</Typography>*/}
-      {/*<div>{JSON.stringify(child)}</div>
-      <div>{JSON.stringify(event)}</div>*/}
-      <ButtonEvent open={open} setOpen={setOpen} child={child} />
+      <img style={{ marginTop: 30, marginLeft: 50 }} src={child?.imageURL} />
+      <Typography align='center' variant='h3' > Имя:{child?.name}</Typography>
+      {/*<Typography align='center' variant='h3' > Возраст:{child?.age}</Typography>*/}
+      {/*<Typography align='center' variant='h3' > Пол:{child?.gender}</Typography>*/}
+
+      {event.map(item => {
+        return (
+          <Typography align='center' variant='h3' > событие:{item.text}</Typography>
+        )
+      })}
+
+      <ButtonEvent open={open} setOpen={setOpen} child={child} id={id}/>
     </div>
   );
 }
