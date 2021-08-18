@@ -11,8 +11,6 @@ import { useLocation } from 'react-router-dom';
 import { logout } from '../../redux/features/application';
 import logo from '../../components/kk.jpg'
 import { makeStyles } from '@material-ui/core/styles';
-/*style={{width:'100%',
-  height: '100%', marginTop: 40}}*/
 
 const useStyles = makeStyles((theme) => ({
   img:{
@@ -61,8 +59,6 @@ function Home(props) {
               alt='Forest'
             />
             <Carousel.Caption>
-              {/*<h3>Forest image</h3>*/}
-              {/*<p>Lorem ipsum dolor sit.</p>*/}
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>

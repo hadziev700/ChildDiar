@@ -87,11 +87,11 @@ export const loadEvent = () => {
   };
 };
 
-export const postEvent = (data) => {
+export const postEvent = (data,id) => {
   return async (dispatch, getState) => {
     dispatch({ type: "event/create/pending" });
     const state = getState();
-    const response = await fetch('http://localhost:4000/event', {
+    const response = await fetch(`http://localhost:4000/event/${id}`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${state.application.token}`,

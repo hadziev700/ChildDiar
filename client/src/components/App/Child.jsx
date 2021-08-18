@@ -84,29 +84,6 @@ function Child(props) {
                         <img className="img" src={item.imageURL} />
                       </Typography>
                     </NavLink>
-
-                    {/*<Typography*/}
-                    {/*  style={{ textAlign: "center" }}*/}
-                    {/*  className={classes.pos}*/}
-                    {/*  color="textSecondary"*/}
-                    {/*>*/}
-                    {/*  <h3> имя:{item.name}</h3>*/}
-                    {/*</Typography>*/}
-
-                    {/*<Typography*/}
-                    {/*  style={{ textAlign: "center" }}*/}
-                    {/*  color="textSecondary"*/}
-                    {/*>*/}
-                    {/*  <h4> Возрат:{item.age}</h4>*/}
-                    {/*</Typography>*/}
-
-                    {/*<Typography style={{textAlign:'center'}} color="textSecondary">
-                        <h4>{item.user.name}</h4>
-                      </Typography>*/}
-
-                    {/* <Typography style={{textAlign:'center'}} color="textSecondary">
-                        <h4>Пол:{item.gender}</h4>
-                      </Typography>*/}
                   </CardContent>
                   <CardActions>
                   </CardActions>

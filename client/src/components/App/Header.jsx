@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   btnVolonters: {
     textDecoration: "none",
     fontWeight: "bold",
-    color: "blue",   // дети
+    color: "blue", // дети
     marginLeft: 75,
     marginRight: 75,
     //backgroundColor: "#000841", //
@@ -62,9 +62,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
     borderRadius: "3px",
     //marginLeft:400,
-
-
-
   },
   btnLogOut: {
     padding: "0 5px",
@@ -97,10 +94,6 @@ function Header() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
-  /*useEffect(() => {
-    dispatch(loadCategories());
-  }, [dispatch]);*/
-
   const handleLogout = (e) => {
     e.preventDefault();
     setIsLoggedOut(false);
@@ -125,41 +118,10 @@ function Header() {
                 color="inherit"
                 aria-label="menu"
               >
-                <img
-                  src={logo}
-                  alt='logo'
-                />
+                <img src={logo} alt="logo" />
               </IconButton>
             </NavLink>
-           {/* <Typography variant="h6" className={classes.title}>
-              <Button color="inherit">
-                <NavLink
-                  className={classnames(
-                    classes.btnVolonters,
-                    pathname === "/notes/all" && classes.linkActive
-                  )}
-                  to={`/notes/all`}
-                >
-                  {" "}
-                  Дети
-                </NavLink>
-              </Button>
 
-              <Button color="inherit">
-                <NavLink
-                  className={classnames(
-                    classes.btnSob,
-                    pathname === "/event" && classes.linkActive
-                  )}
-                  to={`/event`}
-                >
-                  {" "}
-                  Событие
-                </NavLink>
-              </Button>
-
-
-            </Typography>*/}
             <Button color="inherit">
               <NavLink
                 className={classnames(
@@ -200,10 +162,7 @@ function Header() {
               color="inherit"
               aria-label="menu"
             >
-              <img
-                src={logo}
-                alt='logo'
-              />
+              <img src={logo} alt="logo" />
             </IconButton>
           </NavLink>
           <Typography variant="h6" className={classes.title}>
@@ -219,48 +178,7 @@ function Header() {
                 Фото галерея
               </NavLink>
             </Button>
-
-            {/*<Button color="inherit">*/}
-            {/*  <NavLink*/}
-            {/*    className={classnames(*/}
-            {/*      classes.btnVolonters,*/}
-            {/*      pathname === "/rod" && classes.linkActive*/}
-            {/*    )}*/}
-            {/*    to={`/rod`}*/}
-            {/*  >*/}
-            {/*    {" "}*/}
-            {/*    Родители*/}
-            {/*  </NavLink>*/}
-            {/*</Button>*/}
-
-            {/*<Button color="inherit">*/}
-            {/*  <NavLink*/}
-            {/*    className={classnames(*/}
-            {/*      classes.btnVolonters,*/}
-            {/*      pathname === "/event" && classes.linkActive*/}
-            {/*    )}*/}
-            {/*    to={`/event`}*/}
-            {/*  >*/}
-            {/*    {" "}*/}
-            {/* Событие*/}
-            {/*  </NavLink>*/}
-            {/*</Button>*/}
-
           </Typography>
-
-          {/*<Button color="inherit">
-            <NavLink
-              className={classnames(
-                classes.btnVolonters,
-                pathname === "/eee" && classes.linkActive
-              )}
-              to={`/eee`}
-            >
-              {" "}
-              Добавление
-            </NavLink>
-          </Button>*/}
-
           <Button color="inherit" disableElevation>
             <NavLink
               className={classnames(
