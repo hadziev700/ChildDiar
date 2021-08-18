@@ -4,7 +4,6 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Admin from './Admin/Admin';
 import Child from './Child';
-import Event from './Event';
 import Users from './Users';
 import Home from './Home'
 import IdChild from './IdChild';
@@ -32,12 +31,6 @@ function Main(props) {
             <Route path="/child/:id">
                <IdChild/>
             </Route>
-          <Route path="/event" exact>
-            <Event/>
-          </Route>
-          <Route path="/eee" exact>
-            <Event/>
-          </Route>
           <Route path="/admin" exact>
             <Users/>
           </Route>

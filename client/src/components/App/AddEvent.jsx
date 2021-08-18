@@ -16,13 +16,13 @@ import {
   TextField,
 } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteChild, postChild } from "../../redux/features/child";
+import { deleteChild, loadChild, postChild } from "../../redux/features/child";
 import { useParams } from "react-router-dom";
 
 import { RiPlayListAddFill } from "react-icons/all";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from "@material-ui/core/Button";
-import { postEvent } from "../../redux/features/event";
+import { deleteEvent, loadEvent, postEvent } from "../../redux/features/event";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 function AddEvent({ open, setOpen, id }) {
   const dispatch = useDispatch();
 
-  //const event = useSelector((state) => state.event.items);
+  // const event = useSelector((state) => state.event.items);
   // const loading = useSelector((state) => state.event.loading);
 
   const [date, setDate] = useState("");
